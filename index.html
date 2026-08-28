@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하임건축사사무소 | 하임건축사사무소</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            color: #111;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 내비게이션 바 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 2.31rem; /* 기존 2.1rem에서 1.1배 추가 확대 */
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #777;
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.25)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: #fff;
+        }
+
+        /* 메인 글씨 영역 */
+        .hero-text-box {
+            position: absolute;
+            left: 30.7%;
+            bottom: 3.0%;
+            max-width: 650px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* 메인 글씨 크기 */
+        .hero h1 {
+            font-size: 2.48rem;
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            font-weight: 300;
+            opacity: 0.95;
+            word-break: keep-all;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        /* About 섹션 */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.26rem; /* 기존 1.05rem에서 1.2배 확대 */
+        }
+
+        /* About 이미지 갤러리 */
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-box {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+            background-color: #fff;
+        }
+
+        /* 왼쪽 CI 개념 이미지 */
+        .image-box.left-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        /* 오른쪽 문패 이미지 */
+        .image-box.right-img {
+            background-color: #121315;
+        }
+
+        .image-box.right-img img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        /* 프로젝트 섹션 (전체 이미지 100% 원본 비율 노출) */
+        .projects {
+            background-color: #f9f9f9;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img-wrapper {
+            width: 100%;
+            height: 220px;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-info {
+            padding: 16px;
+            background-color: #fff;
+        }
+
+        .project-info h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project-info p {
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* 문의하기 및 푸터 */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        footer {
+            padding: 40px 8%;
+            background-color: #111;
+            color: #888;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 1200px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text-box { 
+                left: 5%; 
+                bottom: 2.0%; 
+                max-width: 90%; 
+            }
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1.05rem; }
+            .about-images, .contact { grid-template-columns: 1fr; }
+            .image-box { height: 300px; }
+            .project-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="logo">Heim Architects</div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </header>
+
+    <!-- 메인 비주얼 -->
+    <section class="hero">
+        <div class="hero-text-box">
+            <h1>하임건축사사무소</h1>
+            <p>내 집(Heim) 같은 편안함을 디자인합니다.</p>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 (첨부된 ABOUT US 이미지 적용) -->
+    <section id="about">
+        <h2 class="section-title">ABOUT US</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>하임건축사사무소</strong>는 독일어로 '집'과 '고향'을 의미하는 'Heim'에서 출발하였습니다.</p>
+                <p>거주하는 이에게 가장 편안하고 가치 있는 공간을 만드는 것을 목표로 합니다.</p>
+                <p>주거, 상업, 종교시설등 다양한 분야에서 기획부터 설계, 감리까지 통합적인 건축 솔루션을 제공합니다.</p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p>                                                                                                                대표건축사 구진원</p>
+            </div>
+            <div class="about-images">
+                <div class="image-box left-img">
+                    <img src="최고_CIreal.jpg" alt="하임건축사사무소 CI 개념 이미지">
+                </div>
+                <div class="image-box right-img">
+                    <img src="하임건축 문패.jpg" alt="하임건축사사무소 문패 이미지">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 섹션 -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">PORTFOLIO</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="식사베네하임.jpg" alt="식사 베네하임 오피스텔">
+                </div>
+                <div class="project-info">
+                    <h3>고양시 오피스텔</h3>
+                    <p>근린생활시설 / 오피스텔 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="도내동 준공.jpg" alt="도내동 복합시설">
+                </div>
+                <div class="project-info">
+                    <h3>고양시 오피스텔</h3>
+                    <p>근린생활시설 / 오피스텔 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="11111.jpg" alt="명성 비전센터">
+                </div>
+                <div class="project-info">
+                    <h3>고양시 근린생활시설</h3>
+                    <p>근린생활시설 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="다운로드 (1).jpg" alt="종교 및 문화시설">
+                </div>
+                <div class="project-info">
+                    <h3>은평구 종교시설</h3>
+                    <p>종교시설 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="0.jpg" alt="붉은벽돌 근린생활시설">
+                </div>
+                <div class="project-info">
+                    <h3>성남시 점포주택</h3>
+                    <p>근린생활시설 / 다가구 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="16.jpg" alt="EGGS & OLIVES 근린생활시설">
+                </div>
+                <div class="project-info">
+                    <h3>분당 점포주택</h3>
+                    <p>근린생활시설 / 점포주택 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="1401258208901.jpg" alt="물류센터 시설">
+                </div>
+                <div class="project-info">
+                    <h3>안성시 물류센터</h3>
+                    <p>창고시설 |</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="신수동 최종 투시도 사진.jpg" alt="신수동 소형 건축물">
+                </div>
+                <div class="project-info">
+                    <h3>신수동 근린생활시설</h3>
+                    <p>근린생활시설 |</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문의하기 섹션 -->
+    <section id="contact">
+        <h2 class="section-title">CONTACT</h2>
+        <div class="contact">
+            <div class="contact-info">
+                <p><strong>주소:</strong> 경기도 부천시 신흥로 223 (중동), 신중동역 랜드마크 푸르지오 시티, 102동 1710호</p>
+                <p><strong>전화:</strong> 032-326-5088</p>
+                <p><strong>이메일:</strong> heim9999@naver.com</p>
+                <p><strong>운영시간:</strong> 평일 09:00 - 18:00 (공휴일 휴무)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2023 Heim Architects. All rights reserved.</p>
+        <p>하임건축사사무소 | 대표건축사: 구진원</p>
+    </footer>
+
+</body>
+</html>
